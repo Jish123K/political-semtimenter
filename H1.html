@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Political Tweets</title>
+
+</head>
+
+<body>
+
+    <h1>Political Tweets</h1>
+
+    <form action="/search">
+
+        <input type="text" name="query" placeholder="Search for tweets">
+
+        <input type="submit" value="Search">
+
+    </form>
+
+    <ul>
+
+        {% for tweet in recent_tweets %}
+
+            <li>{{ tweet.text }}</li>
+
+        {% endfor %}
+
+    </ul>
+
+</body>
+
+</html>
