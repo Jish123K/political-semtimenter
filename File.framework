@@ -1,0 +1,116 @@
+# Import the necessary libraries
+
+import os
+
+import shutil
+
+# Get the current working directory
+
+current_directory = os.getcwd()
+
+# Create a new directory for the repository
+
+repository_directory = os.path.join(current_directory, "repository")
+
+os.mkdir(repository_directory)
+
+# Change the current working directory to the repository
+
+os.chdir(repository_directory)
+
+# Create a new file for the software
+
+software_file = open("software.py", "w")
+
+# Write the software code to the file
+
+software_file.write("""
+
+import spacy
+
+import flash
+
+import cherry
+
+# Create a spacy language model
+
+nlp = spacy.load("en_core_web_sm")
+
+# Create a flash application
+
+app = flash.Flask(__name__)
+
+# Define a route for the home page
+
+@app.route("/")
+
+def home():
+
+    # Get the most recent 10 tweets
+
+    recent_tweets = api.search(q="politics", count=10)
+
+    # Render the home page
+
+    return render_template("home.html", recent_tweets=recent_tweets)
+
+# Define a route for the search page
+
+@app.route("/search")
+
+
+def search():
+# Get the query from the user
+
+    query = request.args.get("query")
+
+    # Search for tweets about the query
+
+    tweets = api.search(q=query, count=10)
+
+    # Render the search page
+
+    return render_template("search.html", tweets=tweets)
+
+# Run the application
+
+if __name__ == "__main__":
+
+    app.run(debug=True)
+
+""")
+
+# Close the file
+
+software_file.close()
+
+# Add the file to the Git repository
+
+git add software.py
+
+# Commit the changes to the Git repository
+
+git commit -m "Added software file"
+
+# Push the changes to the remote Git repository
+
+git push
+# Print a message to the user
+
+print("The changes have been pushed to the remote Git repository.")
+
+# Ask the user if they want to continue
+
+user_input = input("Do you want to continue? (y/n)")
+
+# If the user wants to continue, start the application
+
+if user_input == "y":
+
+    python main.py
+
+# If the user does not want to continue, exit the program
+
+else:
+
+    exit()
